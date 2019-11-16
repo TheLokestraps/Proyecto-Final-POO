@@ -1,21 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pfpoo;
 
-/**
- *
- * @author TheLokestraps
- */
+import java.util.Scanner;
+
+
 public class PFPOO {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+         Scanner sc=new Scanner(System.in);
+        System.out.println("Digite nombre:");
+        String nom=sc.next();
+        System.out.println("Digite apellido:");
+        String ape=sc.next();
+    
+       NewClass nn=new NewClass(nom,ape);
+       nn.guardar();
     }
     
 }
