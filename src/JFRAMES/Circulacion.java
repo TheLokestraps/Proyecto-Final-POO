@@ -6,15 +6,21 @@
 package JFRAMES;
 
 
+import AppPackage.AnimationClass;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 /**
  *
@@ -25,48 +31,85 @@ public class Circulacion extends javax.swing.JFrame {
     /**
      * Creates new form Circulacion
      */
-    public Circulacion() {
-        initComponents();
-        
-        jPanel1.setBackground(new Color(45,22,0,69));
-
-        
-        ImageIcon LaImg = new ImageIcon("src\\Imagenes2D\\1543588021_056671_1543588194_noticia_normal.jpg");
-        ImageIcon Resize = new ImageIcon(LaImg.getImage().getScaledInstance(Background.getWidth(),Background.getHeight(),Image.SCALE_SMOOTH));
-        this.Background.setIcon(Resize);
-        
-        ImageIcon BUS1 = new ImageIcon("src\\Imagenes2D\\bus01.png");
-        ImageIcon Resize1 = new ImageIcon(BUS1.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_DEFAULT));
-        this.Anim.setIcon(Resize1);
-        
-        ImageIcon BUS2 = new ImageIcon("src\\Imagenes2D\\bus02.png");
-        ImageIcon Resize2 = new ImageIcon(BUS2.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_DEFAULT));
-        
-        ImageIcon BUS3 = new ImageIcon("src\\Imagenes2D\\bus03.png");
-        ImageIcon Resize3 = new ImageIcon(BUS3.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_DEFAULT));
-        
-        ImageIcon BUS4 = new ImageIcon("src\\Imagenes2D\\bus04.png");
-        ImageIcon Resize4 = new ImageIcon(BUS4.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_DEFAULT));
-        
-         ImageIcon Golazo = new ImageIcon("src\\Imagenes2D\\images.png");
-        ImageIcon Resize5 = new ImageIcon(Golazo.getImage().getScaledInstance(goal.getWidth(),goal.getHeight(),Image.SCALE_DEFAULT));
-        goal.setIcon(Resize5);
-        
-    }
-   
+    ImageIcon Resize,Resize1,Resize2,Resize3,Resize4,Resize5,ResizeBoton;    
     
-        private class TransparentPanel extends JPanel {
-        {
-            setOpaque(false);
-        }
-        public void paintComponent(Graphics g) {
-            g.setColor(getBackground());
-            Rectangle r = g.getClipBounds();
-            g.fillRect(r.x, r.y, r.width, r.height);
-            super.paintComponent(g);
-        }
+    
+    public Circulacion() {
+
+       initComponents();
+              
+       Back.setBackground(new Color(45,22,0,69));
+       
+       SetearIconos();
+       this.boton.setIcon(ResizeBoton);
+       
+       boton.setBorderPainted(false);
+       boton.setContentAreaFilled(false);
+       boton.setFocusPainted(false);
+       boton.setOpaque(false);
+       
+       jLabel2.setBackground(new Color(16,208,60,180));
+       jLabel3.setBackground(new Color(16,208,60,180));
+       jLabel1.setBackground(new Color(16,208,60,180));
+               
+               
+       Timer s = new Timer(50, new ActionListener(){
+           int i = 1;
+           public void actionPerformed(ActionEvent e){
+                if(i == 1)Anim.setIcon(Resize1);
+                if(i == 2)Anim.setIcon(Resize2);
+                if(i == 3)Anim.setIcon(Resize3);
+                if(i == 4)Anim.setIcon(Resize4);
+            
+                if(i > 4){
+                    i = 0;
+                }
+            
+                i++;
+           }
+       });s.start();
+       
+       
+       
+       
+        Timer t = new Timer(250, new ActionListener(){
+        int i = 1;
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           if(Anim.getX() >= 575){
+               ((Timer)e.getSource()).stop();
+           }
+            
+            
+            Anim.setLocation((Anim.getX()+1), Anim.getY());
+            Anim.revalidate();
+            Anim.repaint();
+            
+            
+//            if(i == 1)Anim.setIcon(Resize1);
+//            if(i == 2)Anim.setIcon(Resize2);
+//            if(i == 3)Anim.setIcon(Resize3);
+//            if(i == 4)Anim.setIcon(Resize4);
+//            
+//            if(i > 4){
+//                i = 0;
+//            }
+//            
+//            i++;
+             
+//            System.out.println(SwingUtilities.isEventDispatchThread());
+                
+         }
+            });
+            t.start();
+        
+        
     }
         
+    
+    
+    
+    
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,40 +120,137 @@ public class Circulacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         Anim = new javax.swing.JLabel();
         goal = new javax.swing.JLabel();
+        Back = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        tf_user = new javax.swing.JTextField();
+        tf_time = new javax.swing.JTextField();
+        tf_busname = new javax.swing.JTextField();
+        boton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 255, 255));
-        jPanel1.setLayout(null);
-
         Anim.setText("Animation");
-        jPanel1.add(Anim);
-        Anim.setBounds(20, 30, 110, 70);
+        Anim.setDoubleBuffered(true);
+        getContentPane().add(Anim);
+        Anim.setBounds(60, 140, 100, 70);
 
         goal.setText("Llegada");
-        jPanel1.add(goal);
-        goal.setBounds(563, 27, 100, 70);
+        getContentPane().add(goal);
+        goal.setBounds(670, 130, 80, 100);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(60, 110, 680, 120);
+        Back.setBackground(new java.awt.Color(153, 255, 0));
+        Back.setOpaque(true);
+        getContentPane().add(Back);
+        Back.setBounds(30, 110, 730, 130);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        jLabel1.setText("Esperando Bus ");
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(60, 420, 150, 20);
+
+        jLabel2.setBackground(new java.awt.Color(16, 208, 60));
+        jLabel2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        jLabel2.setText("Tiempo de llegada ");
+        jLabel2.setOpaque(true);
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(60, 280, 150, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        jLabel3.setText("Usuario");
+        jLabel3.setOpaque(true);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(60, 350, 150, 20);
+
+        tf_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_userActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tf_user);
+        tf_user.setBounds(240, 350, 180, 30);
+
+        tf_time.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_timeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tf_time);
+        tf_time.setBounds(240, 280, 140, 30);
+
+        tf_busname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_busnameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tf_busname);
+        tf_busname.setBounds(240, 420, 180, 30);
+
+        boton.setBorder(null);
+        boton.setBorderPainted(false);
+        getContentPane().add(boton);
+        boton.setBounds(540, 410, 110, 90);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2D/1543588021_056671_1543588194_noticia_normal.jpg"))); // NOI18N
+        Background.setMaximumSize(new java.awt.Dimension(800, 600));
+        Background.setMinimumSize(new java.awt.Dimension(800, 600));
+        Background.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(Background);
         Background.setBounds(0, 0, 810, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tf_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_userActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_userActionPerformed
+
+    private void tf_timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_timeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_timeActionPerformed
+
+    private void tf_busnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_busnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_busnameActionPerformed
+
+    
+    
+    private void SetearIconos(){
+        ImageIcon LaImg = new ImageIcon("src\\Imagenes2D\\1543588021_056671_1543588194_noticia_normal.jpg");
+        Resize = new ImageIcon(LaImg.getImage().getScaledInstance(Background.getWidth(),Background.getHeight(),Image.SCALE_SMOOTH));
+        this.Background.setIcon(Resize);
+        
+        ImageIcon BUS1 = new ImageIcon("src\\Imagenes2D\\bus01.png");
+        Resize1 = new ImageIcon(BUS1.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_SMOOTH));
+        this.Anim.setIcon(Resize1);
+        
+        ImageIcon BUS2 = new ImageIcon("src\\Imagenes2D\\bus02.png");
+        Resize2 = new ImageIcon(BUS2.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_SMOOTH));
+        
+        ImageIcon BUS3 = new ImageIcon("src\\Imagenes2D\\bus03.png");
+        Resize3 = new ImageIcon(BUS3.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_SMOOTH));
+        
+        ImageIcon BUS4 = new ImageIcon("src\\Imagenes2D\\bus04.png");
+        Resize4 = new ImageIcon(BUS4.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_SMOOTH));
+        
+        ImageIcon Golazo = new ImageIcon("src\\Imagenes2D\\images.png");
+        Resize5 = new ImageIcon(Golazo.getImage().getScaledInstance(goal.getWidth(),goal.getHeight(),Image.SCALE_SMOOTH));
+        goal.setIcon(Resize5);
+        
+        ImageIcon Buton = new ImageIcon("src\\Imagenes2D\\boton.png");
+        ResizeBoton = new ImageIcon(Buton.getImage().getScaledInstance(boton.getWidth(),boton.getHeight(),Image.SCALE_SMOOTH));
+    }
     /**
      * @param args the command line arguments
      */
@@ -144,12 +284,22 @@ public class Circulacion extends javax.swing.JFrame {
                 new Circulacion().setVisible(true);
             }
         });
+        
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Anim;
+    private javax.swing.JLabel Back;
     private javax.swing.JLabel Background;
+    private javax.swing.JButton boton;
     private javax.swing.JLabel goal;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField tf_busname;
+    private javax.swing.JTextField tf_time;
+    private javax.swing.JTextField tf_user;
     // End of variables declaration//GEN-END:variables
 }
