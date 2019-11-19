@@ -46,16 +46,21 @@ public class Transmetro {
 //         uu.guardar();
     }
 
-    public static Persona buscarPersonaconCedula(String cedula) {
+    public static Persona buscarPersonaconCedula(String cedular) {
         int i = 0;
         while (i < personas.size()) {
-            if (personas.get(i).cedula.equals(cedula)) {
-                return personas.get(i);
+            if (personas.get(i).cedula.equals(cedular)) {
+//                return personas.get(i);
+                   break;
+                    
             }
             i++;
         }
-
-        return null;
+        if(i <personas.size()){
+            return personas.get(i);
+        }else{
+            return null;
+        }
     }
 
     public static boolean personaExiste(String cedula) {

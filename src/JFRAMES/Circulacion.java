@@ -32,7 +32,7 @@ import pfpoo.Transmetro;
  *
  * @author TheLokestraps
  */
-public class Circulacion extends javax.swing.JFrame {
+public class Circulacion extends javax.swing.JDialog  {
 
     /**
      * Creates new form Circulacion
@@ -40,8 +40,8 @@ public class Circulacion extends javax.swing.JFrame {
     ImageIcon Resize,Resize1,Resize2,Resize3,Resize4,Resize5,ResizeBoton;    
     
     
-    public Circulacion() {
-
+    public Circulacion(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
        initComponents();
               
        Back.setBackground(new Color(45,22,0,69));
@@ -109,7 +109,12 @@ public class Circulacion extends javax.swing.JFrame {
             });
             t.start();
         
-        
+        this.tf_estacion.setEditable(false);
+        this.tf_ruta.setEditable(false);
+        this.tf_time.setEditable(false);
+            
+            
+            
     }
         
     
@@ -137,11 +142,8 @@ public class Circulacion extends javax.swing.JFrame {
         tf_ruta = new javax.swing.JTextField();
         boton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -223,18 +225,6 @@ public class Circulacion extends javax.swing.JFrame {
         Background.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(Background);
         Background.setBounds(0, -10, 810, 600);
-
-        jLabel4.setText("jLabel1");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(70, 270, 34, 14);
-
-        jRadioButton1.setText("jRadioButton1");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(150, 150, 93, 23);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(540, 340, 56, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -331,8 +321,14 @@ public class Circulacion extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Circulacion().setVisible(true);
+            public void run() {Circulacion dialog = new Circulacion(new javax.swing.JFrame(), true);
+                
+               dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent e) {
+				System.exit(0);
+			}
+		});
             }
         });
         
@@ -346,12 +342,9 @@ public class Circulacion extends javax.swing.JFrame {
     private javax.swing.JLabel Background;
     private javax.swing.JButton boton;
     private javax.swing.JLabel goal;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField tf_estacion;
     private javax.swing.JTextField tf_ruta;
     private javax.swing.JTextField tf_time;

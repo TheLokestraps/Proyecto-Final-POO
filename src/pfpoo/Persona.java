@@ -9,6 +9,7 @@ public class Persona {
     public Persona(String nombre, String contraseña, String cedula) {
         this.nombre = nombre;
         this.contraseña = contraseña;
+        this.cedula = cedula;
     }
 
     

@@ -147,8 +147,10 @@ public class Login extends javax.swing.JFrame {
             if (Transmetro.contraseñaCorrecta(cedula, contraseña)) {
                 Persona p = Transmetro.buscarPersonaconCedula(cedula);
                 if (p instanceof Usuario) {
-                    Circulacion cir = new Circulacion();
-                    this.dispose();
+                    this.setVisible(false);
+                    Circulacion cir = new Circulacion(this,true);
+                    cir.setVisible(true);
+                    this.setVisible(true);
                 }else{
                     JOptionPane.showMessageDialog(null,"En desarrollo");
                 
