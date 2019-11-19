@@ -9,6 +9,9 @@ package JFRAMES;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,8 +27,47 @@ public class Circulacion extends javax.swing.JFrame {
      */
     public Circulacion() {
         initComponents();
-    }
+        
+        jPanel1.setBackground(new Color(45,22,0,69));
 
+        
+        ImageIcon LaImg = new ImageIcon("src\\Imagenes2D\\1543588021_056671_1543588194_noticia_normal.jpg");
+        ImageIcon Resize = new ImageIcon(LaImg.getImage().getScaledInstance(Background.getWidth(),Background.getHeight(),Image.SCALE_SMOOTH));
+        this.Background.setIcon(Resize);
+        
+        ImageIcon BUS1 = new ImageIcon("src\\Imagenes2D\\bus01.png");
+        ImageIcon Resize1 = new ImageIcon(BUS1.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_DEFAULT));
+        this.Anim.setIcon(Resize1);
+        
+        ImageIcon BUS2 = new ImageIcon("src\\Imagenes2D\\bus02.png");
+        ImageIcon Resize2 = new ImageIcon(BUS2.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_DEFAULT));
+        
+        ImageIcon BUS3 = new ImageIcon("src\\Imagenes2D\\bus03.png");
+        ImageIcon Resize3 = new ImageIcon(BUS3.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_DEFAULT));
+        
+        ImageIcon BUS4 = new ImageIcon("src\\Imagenes2D\\bus04.png");
+        ImageIcon Resize4 = new ImageIcon(BUS4.getImage().getScaledInstance(Anim.getWidth(),Anim.getHeight(),Image.SCALE_DEFAULT));
+        
+         ImageIcon Golazo = new ImageIcon("src\\Imagenes2D\\images.png");
+        ImageIcon Resize5 = new ImageIcon(Golazo.getImage().getScaledInstance(goal.getWidth(),goal.getHeight(),Image.SCALE_DEFAULT));
+        goal.setIcon(Resize5);
+        
+    }
+   
+    
+        private class TransparentPanel extends JPanel {
+        {
+            setOpaque(false);
+        }
+        public void paintComponent(Graphics g) {
+            g.setColor(getBackground());
+            Rectangle r = g.getClipBounds();
+            g.fillRect(r.x, r.y, r.width, r.height);
+            super.paintComponent(g);
+        }
+    }
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,41 +78,35 @@ public class Circulacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Anim = new javax.swing.JLabel();
+        goal = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 600));
+        getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 255, 255));
+        jPanel1.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2D/taxidup.gif"))); // NOI18N
+        Anim.setText("Animation");
+        jPanel1.add(Anim);
+        Anim.setBounds(20, 30, 110, 70);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
-        );
+        goal.setText("Llegada");
+        jPanel1.add(goal);
+        goal.setBounds(563, 27, 100, 70);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(60, 110, 680, 120);
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2D/1543588021_056671_1543588194_noticia_normal.jpg"))); // NOI18N
+        getContentPane().add(Background);
+        Background.setBounds(0, 0, 810, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,7 +147,9 @@ public class Circulacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Anim;
+    private javax.swing.JLabel Background;
+    private javax.swing.JLabel goal;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
