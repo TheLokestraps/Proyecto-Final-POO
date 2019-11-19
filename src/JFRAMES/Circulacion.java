@@ -81,6 +81,7 @@ public class Circulacion extends javax.swing.JFrame {
         Anim = new javax.swing.JLabel();
         goal = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -105,8 +106,13 @@ public class Circulacion extends javax.swing.JFrame {
         jPanel1.setBounds(60, 110, 680, 120);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2D/1543588021_056671_1543588194_noticia_normal.jpg"))); // NOI18N
+        Background.setText("dadsad");
         getContentPane().add(Background);
         Background.setBounds(0, 0, 810, 600);
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(70, 270, 34, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,6 +156,7 @@ public class Circulacion extends javax.swing.JFrame {
     private javax.swing.JLabel Anim;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel goal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
