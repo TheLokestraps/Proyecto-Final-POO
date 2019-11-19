@@ -13,16 +13,20 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import pfpoo.Bus;
 import pfpoo.Estacion;
 import pfpoo.Mapa;
 import pfpoo.Ruta;
+import pfpoo.Transmetro;
 
 /**
  *
@@ -253,8 +257,20 @@ public class Circulacion extends javax.swing.JFrame {
         String ruta = tf_ruta.getText();
         if (Mapa.EstacionExisteNombre(estacion) && Mapa.rutaExiste(ruta)) {
             Ruta laRuta = Mapa.buscarRuta(ruta);
+            String sol = "";
             Estacion laEstacion = Mapa.buscarEstacionConNombre(ruta);
+            ArrayList<Bus> buses = Mapa.busesProximos(laEstacion);
+            for (int i = 0; i < buses.size(); i++) {
+                sol = sol + "\n"+buses.get(i).ID;
+            }
+            if (sol.isEmpty()) {
+                JOptionPane.showMessageDialog(null,"No hay ningun bus cercano");
+            }else{
+                JOptionPane.showMessageDialog(null,sol);
             
+            }
+            Transmetro.avanzarBuses();
+                
         }
 
     }//GEN-LAST:event_botonActionPerformed

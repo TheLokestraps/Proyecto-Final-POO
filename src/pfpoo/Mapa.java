@@ -73,6 +73,26 @@ public class Mapa {
     }
     
     
+    
+    
+        public static Parada proximaParada(Parada actual){
+        Parada proxima; 
+        int i = 0;
+        while(i<paradas.size()){
+            if (paradas.get(i).Direccion.equals(actual.Direccion)) {
+                break;
+            }
+            i++;
+        }
+        if (i<paradas.size()-1) {
+            proxima = paradas.get(i+1);
+        }else{
+            proxima = paradas.get(0);
+        }
+        return proxima;
+    }
+
+    
     public static Ruta buscarRuta(String nombre){
         int i = 0; 
         while(i<rutas.size()){

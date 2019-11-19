@@ -219,10 +219,8 @@ public class Transmetro {
         int i = 0;
         while(i<buses.size()){
             buses.get(i).paradaAnterior = Mapa.estaciones.get(selectorEstacion());
+            buses.get(i).proximaParada = Mapa.proximaParada(buses.get(i).paradaAnterior);
         }
-        
-        
-    
     }
     
     public static int selectorEstacion(){
@@ -232,6 +230,14 @@ public class Transmetro {
         
         }while(0>=i && i<Mapa.estaciones.size());
         return i;
+    }
+    public static void avanzarBuses(){
+        int i = 0;
+        while(i<buses.size()){
+            buses.get(i).avanzar();
+        }
+    
+    
     }
     
 
