@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Transmetro {
 
-    public ArrayList<Bus> buses = new ArrayList<>();
-    public ArrayList<Ruta> rutas = new ArrayList<>();
-    public ArrayList<Persona> personas = new ArrayList<>();
-    public ArrayList<Conductor> conductores = new ArrayList<>();
+    public static ArrayList<Bus> buses = new ArrayList<>();
+    public static ArrayList<Ruta> rutas = new ArrayList<>();
+    public static ArrayList<Persona> personas = new ArrayList<>();
+    public static ArrayList<Conductor> conductores = new ArrayList<>();
     
 
      public static void main(String[] args) {
@@ -29,9 +29,29 @@ public class Transmetro {
          String nom=sc.next();
          System.out.println("Escriba la contraseña del usuario:");
          String con=sc.next();
-         Usuario uu=new Usuario(nom,con);
+          System.out.println("Escriba la cedula del usuario:");
+         String cel=sc.next();
+        
+         Usuario uu=new Usuario(nom,con,cel);
          uu.guardar();
     }
+     
+    public static Persona buscarPersonaconCedula(String cedula){
+        int i = 0;
+        while(i<personas.size()){
+            if (personas.get(i).cedula.equals(cedula)) {
+                return personas.get(i);
+            }
+            i++;
+        }
+     
+        return null;
+    }
     
+    public static boolean personaExiste(String cedula){
+        return buscarPersonaconCedula(cedula) != null;
+    
+    }
+     
 }
  
