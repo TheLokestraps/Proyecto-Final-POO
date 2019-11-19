@@ -11,29 +11,31 @@ import java.util.ArrayList;
 
 public class Usuario extends Persona {
 
-  public ArrayList<Viaje>  Viajes = new ArrayList<>();
-public ArrayList<String> u= new ArrayList();
-    public Usuario(String nombre, String contraseña) {
-        super(nombre, contraseña);
+    public ArrayList<Viaje> Viajes = new ArrayList<>();
+    public ArrayList<String> u = new ArrayList();
+
+    public Usuario(String nombre, String contraseña, String cedula) {
+        super(nombre, contraseña, cedula);
     }
-    
-     public void guardar(){
-       u.clear();
-         try {
-                loadInformation(u, "Usuario.txt");
-   
-            } catch (Exception jsd) {
-            }
-        
-        String combinar2=nombre+"/"+contraseña;
-         u.add(combinar2);
-          try {
-                    saveInformation(u,"Usuario.txt" );
-           
-                } catch (Exception jsd) {
-                }
+
+    public void guardar() {
+        u.clear();
+        try {
+            loadInformation(u, "Usuario.txt");
+
+        } catch (Exception jsd) {
+        }
+
+        String combinar2 = nombre + "/" + contraseña + "/" + cedula;
+        u.add(combinar2);
+        try {
+            saveInformation(u, "Usuario.txt");
+
+        } catch (Exception jsd) {
+        }
     }
- public void saveInformation(ArrayList info, String ruta) throws IOException {
+
+    public void saveInformation(ArrayList info, String ruta) throws IOException {
         String rutaU = ruta;
         File file = new File(rutaU);
         FileWriter fr = new FileWriter(file);
@@ -45,7 +47,8 @@ public ArrayList<String> u= new ArrayList();
         bw.close();
 
     }
-  public void loadInformation(ArrayList dato, String ruta) throws FileNotFoundException {
+
+    public void loadInformation(ArrayList dato, String ruta) throws FileNotFoundException {
         String rutaU = ruta;
         File file = new File(rutaU);
         FileReader fr = new FileReader(file);
@@ -55,8 +58,5 @@ public ArrayList<String> u= new ArrayList();
             dato.add(String.valueOf(line[i]));
         }
     }
-  
-  
-  
-  
+
 }

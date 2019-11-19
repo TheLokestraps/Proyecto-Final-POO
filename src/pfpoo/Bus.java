@@ -16,6 +16,7 @@ public class Bus {
     public Parada ultimaParada;
     public Parada proximaParda;
     public ArrayList<String>b=new ArrayList();
+    
     public Bus(String ID, Parada ultimaParada, Parada proximaParada) {
         this.ID = ID;
         this.ultimaParada = ultimaParada;

@@ -131,6 +131,7 @@ public class Circulacion extends javax.swing.JFrame {
         tf_busname = new javax.swing.JTextField();
         boton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -208,6 +209,10 @@ public class Circulacion extends javax.swing.JFrame {
         Background.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(Background);
         Background.setBounds(0, 0, 810, 600);
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(70, 270, 34, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -8,9 +8,8 @@ public class Ruta {
     public ArrayList<Recorrido> recorridos = new ArrayList<>();
     public Parada ultimaParada;
 
-    public Ruta(String nombre, Parada ultimaParada) {
+    public Ruta(String nombre) {
         this.nombre = nombre;
-        this.ultimaParada = ultimaParada;
     }
 
     
