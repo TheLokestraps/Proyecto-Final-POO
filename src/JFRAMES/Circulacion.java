@@ -20,6 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import pfpoo.Estacion;
+import pfpoo.Mapa;
+import pfpoo.Ruta;
 
 /**
  *
@@ -125,13 +128,14 @@ public class Circulacion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tf_user = new javax.swing.JTextField();
+        tf_estacion = new javax.swing.JTextField();
         tf_time = new javax.swing.JTextField();
-        tf_busname = new javax.swing.JTextField();
+        tf_ruta = new javax.swing.JTextField();
         boton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -156,7 +160,7 @@ public class Circulacion extends javax.swing.JFrame {
         Back.setBounds(30, 110, 730, 130);
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        jLabel1.setText("Esperando Bus ");
+        jLabel1.setText("Esperando ruta");
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(60, 420, 150, 20);
@@ -169,18 +173,18 @@ public class Circulacion extends javax.swing.JFrame {
         jLabel2.setBounds(60, 280, 150, 20);
 
         jLabel3.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        jLabel3.setText("Usuario");
+        jLabel3.setText("Estacion");
         jLabel3.setOpaque(true);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(60, 350, 150, 20);
 
-        tf_user.addActionListener(new java.awt.event.ActionListener() {
+        tf_estacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_userActionPerformed(evt);
+                tf_estacionActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_user);
-        tf_user.setBounds(240, 350, 180, 30);
+        getContentPane().add(tf_estacion);
+        tf_estacion.setBounds(240, 350, 180, 30);
 
         tf_time.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,16 +194,21 @@ public class Circulacion extends javax.swing.JFrame {
         getContentPane().add(tf_time);
         tf_time.setBounds(240, 280, 140, 30);
 
-        tf_busname.addActionListener(new java.awt.event.ActionListener() {
+        tf_ruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_busnameActionPerformed(evt);
+                tf_rutaActionPerformed(evt);
             }
         });
-        getContentPane().add(tf_busname);
-        tf_busname.setBounds(240, 420, 180, 30);
+        getContentPane().add(tf_ruta);
+        tf_ruta.setBounds(240, 420, 180, 30);
 
         boton.setBorder(null);
         boton.setBorderPainted(false);
+        boton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActionPerformed(evt);
+            }
+        });
         getContentPane().add(boton);
         boton.setBounds(540, 410, 110, 90);
 
@@ -209,7 +218,7 @@ public class Circulacion extends javax.swing.JFrame {
         Background.setMinimumSize(new java.awt.Dimension(800, 600));
         Background.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(Background);
-        Background.setBounds(0, 0, 810, 600);
+        Background.setBounds(0, -10, 810, 600);
 
         jLabel4.setText("jLabel1");
         getContentPane().add(jLabel4);
@@ -219,20 +228,36 @@ public class Circulacion extends javax.swing.JFrame {
         getContentPane().add(jRadioButton1);
         jRadioButton1.setBounds(150, 150, 93, 23);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(540, 340, 56, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tf_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_userActionPerformed
+    private void tf_estacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_estacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_userActionPerformed
+    }//GEN-LAST:event_tf_estacionActionPerformed
 
     private void tf_timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_timeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_timeActionPerformed
 
-    private void tf_busnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_busnameActionPerformed
+    private void tf_rutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_rutaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_busnameActionPerformed
+    }//GEN-LAST:event_tf_rutaActionPerformed
+
+    private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
+        // TODO add your handling code here:
+        String estacion = tf_estacion.getText();
+        String ruta = tf_ruta.getText();
+        if (Mapa.EstacionExisteNombre(estacion) && Mapa.rutaExiste(ruta)) {
+            Ruta laRuta = Mapa.buscarRuta(ruta);
+            Estacion laEstacion = Mapa.buscarEstacionConNombre(ruta);
+            
+        }
+
+    }//GEN-LAST:event_botonActionPerformed
 
     
     
@@ -305,13 +330,14 @@ public class Circulacion extends javax.swing.JFrame {
     private javax.swing.JLabel Background;
     private javax.swing.JButton boton;
     private javax.swing.JLabel goal;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField tf_busname;
+    private javax.swing.JTextField tf_estacion;
+    private javax.swing.JTextField tf_ruta;
     private javax.swing.JTextField tf_time;
-    private javax.swing.JTextField tf_user;
     // End of variables declaration//GEN-END:variables
 }

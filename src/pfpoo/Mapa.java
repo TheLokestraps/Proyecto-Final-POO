@@ -72,7 +72,20 @@ public class Mapa {
         return buses;
     }
     
-  
-
+    
+    public static Ruta buscarRuta(String nombre){
+        int i = 0; 
+        while(i<rutas.size()){
+            if (rutas.get(i).nombre.equals(nombre)) {
+                return rutas.get(i);
+            }
+            i++;
+        }
+        return null;
+    }
+    
+    public static boolean rutaExiste(String nombre){
+        return buscarRuta(nombre) != null;
+    }
   
 }

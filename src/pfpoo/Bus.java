@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Bus {
-
+    
+    public Ruta ruta;
     public String ID;
     public Recorrido  recorrido;
     public Parada paradaAnterior;
