@@ -12,11 +12,15 @@ import java.util.ArrayList;
 public class Parada {
 
     public String Direccion;
-
     public ArrayList<Parada> comoPartida = new ArrayList<>();
     public ArrayList<Ruta> Ruta = new ArrayList<>();
     public ArrayList<Parada> comoDestino = new ArrayList<>();
     public ArrayList<String>p=new ArrayList();
+    public String getDireccion() {
+        return Direccion;
+    }
+
+    
     public Parada(String Direccion) {
         this.Direccion = Direccion;
     }

@@ -77,9 +77,11 @@ public class RegistroPersona extends javax.swing.JFrame {
             }
         });
 
+        conductor.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(conductor);
         conductor.setText("Conductor");
 
+        usuario.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(usuario);
         usuario.setSelected(true);
         usuario.setText("Usuario");

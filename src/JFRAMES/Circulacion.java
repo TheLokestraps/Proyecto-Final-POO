@@ -6,7 +6,6 @@
 package JFRAMES;
 
 
-import AppPackage.AnimationClass;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -131,7 +130,8 @@ public class Circulacion extends javax.swing.JFrame {
         tf_busname = new javax.swing.JTextField();
         boton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -204,15 +204,20 @@ public class Circulacion extends javax.swing.JFrame {
         boton.setBounds(540, 410, 110, 90);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2D/1543588021_056671_1543588194_noticia_normal.jpg"))); // NOI18N
+        Background.setText("dadsad");
         Background.setMaximumSize(new java.awt.Dimension(800, 600));
         Background.setMinimumSize(new java.awt.Dimension(800, 600));
         Background.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(Background);
         Background.setBounds(0, 0, 810, 600);
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 270, 34, 14);
+        jLabel4.setText("jLabel1");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(70, 270, 34, 14);
+
+        jRadioButton1.setText("jRadioButton1");
+        getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(150, 150, 93, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -303,6 +308,8 @@ public class Circulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField tf_busname;
     private javax.swing.JTextField tf_time;
     private javax.swing.JTextField tf_user;

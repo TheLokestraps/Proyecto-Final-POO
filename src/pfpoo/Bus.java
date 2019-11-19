@@ -12,16 +12,24 @@ import java.util.ArrayList;
 public class Bus {
 
     public String ID;
-    public ArrayList<Recorrido>  recorridos = new ArrayList<>();
-    public Parada ultimaParada;
-    public Parada proximaParda;
+    public Recorrido  recorrido;
+    public Parada paradaAnterior;
+    public Parada proximaParada;
     public ArrayList<String>b=new ArrayList();
     
     public Bus(String ID, Parada ultimaParada, Parada proximaParada) {
         this.ID = ID;
-        this.ultimaParada = ultimaParada;
-        this.proximaParda = proximaParada;
+        this.paradaAnterior = ultimaParada;
+        this.proximaParada = proximaParada;
     }
+    public void avanzar(){
+        
+        Parada aux = paradaAnterior;
+        paradaAnterior = proximaParada;
+        proximaParada = recorrido.proximaParada(aux);
+        
+    }
+    
     
      public void guardar(){
        b.clear();

@@ -12,13 +12,34 @@ import java.util.ArrayList;
 public class Estacion extends Parada {
 
   public String nombre;
-  public ArrayList<String>e=new ArrayList();
+  public String nombreRutas;
+  public ArrayList<String> e = new ArrayList();
 
-    public Estacion(String nombre,String Direccion) {
+    public Estacion(String nombre,String Direccion,String nombreRutas) {
         super(Direccion);
         this.nombre = nombre;
-        
+        this.nombreRutas = nombreRutas;
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return Direccion;
+    }
+
+    public String getNombrerutas() {
+        return nombreRutas;
+    }
+    
+    public ArrayList<Ruta> getRuta() {
+        return Ruta;
+    }
+
+  
+
+    
     
   public void guardar(){
        e.clear();
